@@ -6,4 +6,4 @@ describe 'Life', ->
 	it 'a single live cell dies after an evolution', ->
 		Life.inject [ [1, 1] ]
 		Life.evolve()
-		assert Life.isExctinct()
+		assert Life.isExtinct()
