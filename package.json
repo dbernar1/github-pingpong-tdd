@@ -1,7 +1,7 @@
 {
 	"name": "github-pingpong-tdd",
 	"scripts": {
-		"test": "mocha --compilers coffee:coffee-script/register"
+		"test": "mocha --compilers coffee:coffee-script/register -R spec"
 	},
 	"devDependencies": {
 		"coffee-script": "~1.7.1",
