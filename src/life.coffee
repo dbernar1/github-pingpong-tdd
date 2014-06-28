@@ -1,8 +1,16 @@
-module.exports = class Life 
+module.exports = class Life
 
-  @inject:  ->
+	@cellsWithAliveNeighbors: []
 
-  @evolve: ->
+	@inject: ( aliveCells ) ->
+		@cellsWithAliveNeighbors = @neighborsOf aliveCells
+	@evolve: ->
+		cellsThatShouldLiveOn = []
+		for cell in @cellsWithAliveNeighbors
+			if cell.shouldLiveOn()
+				add cell, to = cellsThatShouldLiveOn
 
-  @isExtinct: ->
-    true
+		@cellsWithAliveNeighbors = @neighborsOf cellsThatShouldLiveOn
+
+	@isExtinct: ->
+		@thereAreNo @cellsWithAliveNeighbors
