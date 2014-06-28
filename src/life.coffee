@@ -4,6 +4,7 @@ module.exports = class Life
 
 	@inject: ( aliveCells ) ->
 		@cellsWithAliveNeighbors = @neighborsOf aliveCells
+
 	@evolve: ->
 		cellsThatShouldLiveOn = []
 		for cell in @cellsWithAliveNeighbors
@@ -14,3 +15,6 @@ module.exports = class Life
 
 	@isExtinct: ->
 		@thereAreNo @cellsWithAliveNeighbors
+
+	@thereAreNo: ( array ) ->
+		array.length == 0
