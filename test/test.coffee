@@ -2,16 +2,12 @@ assert = require 'assert'
 
 Life = require '../src/life'
 
-describe 'Life', ->
-	it.skip 'a single live cell dies after an evolution', ->
-		Life.inject [ [1, 1] ]
-		Life.evolve()
-		assert Life.isExtinct()
+nextGenerationIs = assert.deepEqual
+whenCurrentGenerationIs = Life.nextGenerationOf
 
-	it.skip 'a cell with exactly two live neighbors survives an evolution', ->
-		Life.inject [ [1, 1], [1, 2], [2, 1] ]
-		Life.evolve()
-		assert ! ( Life.isExtinct() )
-	describe '.thereAreNo', ->
-		it 'is true when the parameter is an empty array', ->
-			assert Life.thereAreNo []
+describe 'Evolution', ->
+	it 'a single live cell dies after an evolution', ->
+		nextGenerationIs [], whenCurrentGenerationIs [ [1, 1] ]
+
+	it 'an alive cell with exactly two live neighbors is alive in next generation', ->
+		nextGenerationIs [ [1, 2] ], whenCurrentGenerationIs [ [0, 3], [1, 2], [2, 1] ]
