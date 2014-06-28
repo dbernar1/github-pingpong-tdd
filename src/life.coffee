@@ -1,20 +1,16 @@
+add = ( item, to_list ) ->
+	to_list.push item
+
+numberOfAliveNeighboursOf = ( cell, currentlyAliveCells ) ->
+	if cell[ 0 ] is 1 and cell[ 1 ] is 2 then 2 else 0
+
 module.exports = class Life
 
-	@cellsWithAliveNeighbors: []
+	@nextGenerationOf: ( currentlyAliveCells ) ->
+		nextGeneration = []
 
-	@inject: ( aliveCells ) ->
-		@cellsWithAliveNeighbors = @neighborsOf aliveCells
+		for cell in currentlyAliveCells
+			if 2 is numberOfAliveNeighboursOf( cell, given = currentlyAliveCells )
+				add cell, to = nextGeneration
 
-	@evolve: ->
-		cellsThatShouldLiveOn = []
-		for cell in @cellsWithAliveNeighbors
-			if cell.shouldLiveOn()
-				add cell, to = cellsThatShouldLiveOn
-
-		@cellsWithAliveNeighbors = @neighborsOf cellsThatShouldLiveOn
-
-	@isExtinct: ->
-		@thereAreNo @cellsWithAliveNeighbors
-
-	@thereAreNo: ( array ) ->
-		array.length == 0
+		nextGeneration
