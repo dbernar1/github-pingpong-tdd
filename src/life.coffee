@@ -1,16 +1,17 @@
+Universe = require './universe'
+
 add = ( item, to_list ) ->
 	to_list.push item
-
-numberOfAliveNeighboursOf = ( cell, currentlyAliveCells ) ->
-	if cell[ 0 ] is 1 and cell[ 1 ] is 2 then 2 else 0
 
 module.exports = class Life
 
 	@nextGenerationOf: ( currentlyAliveCells ) ->
+		universe = new Universe currentlyAliveCells
+
 		nextGeneration = []
 
 		for cell in currentlyAliveCells
-			if 2 is numberOfAliveNeighboursOf( cell, given = currentlyAliveCells )
+			if 2 is universe.numberOfAliveNeighboursOf( cell )
 				add cell, to = nextGeneration
 
 		nextGeneration
