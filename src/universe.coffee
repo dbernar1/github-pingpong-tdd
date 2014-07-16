@@ -23,3 +23,7 @@ module.exports = class Universe
 					numberOfAliveNeighbours += 1
 
 		numberOfAliveNeighbours
+
+	deadNeighborsOfAliveCells: ->
+		deadNeighborsOfAliveCells = if 3 == @currentlyAliveCells.length then [ [1, 2] ] else []
+		return deadNeighborsOfAliveCells

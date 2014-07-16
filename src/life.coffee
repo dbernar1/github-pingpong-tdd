@@ -15,4 +15,8 @@ module.exports = class Life
 				 3 is universe.numberOfAliveNeighboursOf( cell )
 				add cell, to = nextGeneration
 
+		for cell in universe.deadNeighborsOfAliveCells()
+			if 3 is universe.numberOfAliveNeighboursOf( cell )
+				add cell, to = nextGeneration
+
 		nextGeneration
