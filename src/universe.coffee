@@ -1,14 +1,14 @@
 neighborsOf = ( cell ) ->
-		[ x, y ] = cell.split ","
-		x = parseInt x
-		y = parseInt y
+	[ x, y ] = cell.split ","
+	x = parseInt x
+	y = parseInt y
 
-		neighboringCoords = [
-			[x-1, y-1], [x, y-1], [x+1, y-1],
-			[x-1, y], [x+1, y],
-			[x-1, y+1], [x, y+1], [x+1, y+1]
-		].map (coord) ->
-			"#{coord[0]},#{coord[1]}"
+	neighboringCoords = [
+		[x-1, y-1], [x, y-1], [x+1, y-1],
+		[x-1, y], [x+1, y],
+		[x-1, y+1], [x, y+1], [x+1, y+1]
+	].map (coord) ->
+		"#{coord[0]},#{coord[1]}"
 
 module.exports = class Universe
 
