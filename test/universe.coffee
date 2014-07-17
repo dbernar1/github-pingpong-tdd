@@ -11,7 +11,7 @@ describe 'Universe', ->
 			assert.equal 2, universe.numberOfAliveNeighboursOf "1,2"
 			assert.equal 1, universe.numberOfAliveNeighboursOf "2,1"
 
-		it.skip 'is able to determine the set of dead neighbors of currently alive cells', ->
+		it 'is able to determine the set of dead neighbors of currently alive cells', ->
 			universe = new Universe [ "2,2", "1,2", "2,1" ]
 			assert.deepEqual [
 				"0,1", "0,2", "0,3",
