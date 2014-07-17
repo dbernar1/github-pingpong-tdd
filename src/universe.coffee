@@ -10,6 +10,9 @@ neighborsOf = ( cell ) ->
 	].map (coord) ->
 		"#{coord[0]},#{coord[1]}"
 
+add = ( item, to_list ) ->
+	to_list.push item
+
 module.exports = class Universe
 
 	constructor: ( @currentlyAliveCells ) ->
@@ -23,5 +26,11 @@ module.exports = class Universe
 		numberOfAliveNeighbours
 
 	deadNeighborsOfAliveCells: ->
-		deadNeighborsOfAliveCells = if 3 == @currentlyAliveCells.length then [ "1,2" ] else []
-		return deadNeighborsOfAliveCells
+		deadNeighbors = []
+
+		for aliveCell in @currentlyAliveCells
+			for neighboringCell in neighborsOf( aliveCell )
+				if neighboringCell not in @currentlyAliveCells and neighboringCell not in deadNeighbors
+					add neighboringCell, to = deadNeighbors 
+
+		deadNeighbors.sort()
