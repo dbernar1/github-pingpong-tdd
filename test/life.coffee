@@ -1,4 +1,4 @@
-assert = require 'assert'
+assert = require( 'chai' ).assert
 
 Life = require '../src/life'
 

@@ -25,12 +25,12 @@ module.exports = class Universe
 
 		numberOfAliveNeighbours
 
-	deadNeighborsOfAliveCells: ->
-		deadNeighbors = []
+	deadNeighboringCellsOfAliveCells: ->
+		deadNeighboringCells = []
 
 		for aliveCell in @currentlyAliveCells
 			for neighboringCell in neighborsOf( aliveCell )
-				if neighboringCell not in @currentlyAliveCells and neighboringCell not in deadNeighbors
-					add neighboringCell, to = deadNeighbors 
+				if neighboringCell not in @currentlyAliveCells and neighboringCell not in deadNeighboringCells
+					add neighboringCell, to = deadNeighboringCells
 
-		deadNeighbors.sort()
+		deadNeighboringCells
